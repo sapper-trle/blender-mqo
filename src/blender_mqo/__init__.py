@@ -17,10 +17,12 @@ if "bpy" in locals():
     import importlib
     importlib.reload(utils)
     utils.bl_class_registry.BlClassRegistry.cleanup()
+    importlib.reload(preferences)
     importlib.reload(ops)
 else:
     import bpy
     from . import utils
+    from . import preferences
     from . import ops
 
 import os
@@ -34,7 +36,7 @@ def register_updater(bl_info):
     config.branches = ["master", "develop"]
     config.addon_directory = config.current_addon_path[:config.current_addon_path.rfind("/")]
     config.min_release_version = bl_info["version"]
-    config.target_addon_path = "src/mqo"
+    config.target_addon_path = "src/blender_mqo"
     updater = utils.addon_updater.AddonUpdatorManager.get_instance()
     updater.init(bl_info, config)
 

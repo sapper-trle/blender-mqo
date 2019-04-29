@@ -91,7 +91,7 @@ class BLMQO_Preferences(bpy.types.AddonPreferences):
                 ops = col.operator(
                     BLMQO_OT_UpdateAddon.bl_idname,
                     text="Update to the latest release version (version: {})"
-                        .format(updater.latest_version()),
+                    .format(updater.latest_version()),
                     icon='TRIA_DOWN_BAR')
                 ops.branch_name = updater.latest_version()
             else:
